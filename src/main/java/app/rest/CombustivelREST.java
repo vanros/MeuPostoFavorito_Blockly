@@ -30,6 +30,13 @@ public class CombustivelREST {
   private CombustivelBusiness combustivelBusiness;
 
   /**
+   * @generated
+   */
+  @Autowired
+  @Qualifier("AbastecimentoBusiness")
+  private AbastecimentoBusiness abastecimentoBusiness;
+
+  /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
    * 
    * @generated
@@ -76,6 +83,44 @@ public class CombustivelREST {
   @RequestMapping(method = RequestMethod.GET)
   public HttpEntity<PagedResources<Combustivel>> listParams(Pageable pageable, PagedResourcesAssembler assembler){
     return new ResponseEntity<>(assembler.toResource(combustivelBusiness.list(pageable)), HttpStatus.OK);    
+  }
+
+  /**
+   * OneToMany Relationship GET
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET, value="/{combustivelId}/Abastecimento")    
+  public HttpEntity<PagedResources<Abastecimento>> findAbastecimento(@PathVariable("combustivelId") java.lang.String combustivelId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(combustivelBusiness.findAbastecimento(combustivelId, pageable)), HttpStatus.OK);
+  }
+
+  /**
+   * OneToMany Relationship DELETE 
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.DELETE, value="/{combustivelId}/Abastecimento/{abastecimentoId}")    
+  public void deleteAbastecimento(@PathVariable("abastecimentoId") java.lang.String abastecimentoId) throws Exception {
+    this.abastecimentoBusiness.delete(abastecimentoId);
+  }
+  
+  /**
+   * OneToMany Relationship PUT
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.PUT, value="/{combustivelId}/Abastecimento")
+  public Abastecimento putAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("combustivelId") java.lang.String combustivelId) throws Exception {
+    return this.abastecimentoBusiness.put(entity);
+  }  
+  
+  /**
+   * OneToMany Relationship POST
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.POST, value="/{combustivelId}/Abastecimento")
+  public Abastecimento postAbastecimento(@Validated @RequestBody final Abastecimento entity, @PathVariable("combustivelId") java.lang.String combustivelId) throws Exception {
+    Combustivel combustivel = this.combustivelBusiness.get(combustivelId);
+    entity.setCombustivel(combustivel);
+    return this.abastecimentoBusiness.post(entity);
   }
 
   /**

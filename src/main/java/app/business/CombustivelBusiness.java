@@ -101,6 +101,19 @@ public class CombustivelBusiness {
     // end-user-code
     return result;
   }
+  
+  /**
+   * @generated modifiable
+   * OneToMany Relation
+   */  
+  public Page<Abastecimento> findAbastecimento(java.lang.String id, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Abastecimento> result = repository.findAbastecimento(id, pageable);
+    // begin-user-code  
+    // end-user-code        
+    return result;    
+  }
   /**
    * Foreign Key posto
    * @generated

@@ -140,4 +140,17 @@ public class AbastecimentoBusiness {
     return result;
   }
   
+  /**
+   * Foreign Key combustivel
+   * @generated
+   */
+  public Page<Abastecimento> findAbastecimentosByCombustivel(java.lang.String instanceId, Pageable pageable) {
+    // begin-user-code
+    // end-user-code  
+    Page<Abastecimento> result = repository.findAbastecimentosByCombustivel(instanceId, pageable);
+    // begin-user-code  
+    // end-user-code        
+    return result;
+  }
+  
 }

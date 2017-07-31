@@ -114,4 +114,13 @@ public class AbastecimentoREST {
   public HttpEntity<PagedResources<Abastecimento>> findAbastecimentosByCarro(@PathVariable("carroId") java.lang.String carroId, Pageable pageable, PagedResourcesAssembler assembler) {
     return new ResponseEntity<>(assembler.toResource(abastecimentoBusiness.findAbastecimentosByCarro(carroId, pageable)), HttpStatus.OK);
   }
+
+  /**
+   * Foreign Key combustivel
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET, value="/Combustivel/{combustivelId}")    
+  public HttpEntity<PagedResources<Abastecimento>> findAbastecimentosByCombustivel(@PathVariable("combustivelId") java.lang.String combustivelId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(abastecimentoBusiness.findAbastecimentosByCombustivel(combustivelId, pageable)), HttpStatus.OK);
+  }
 }

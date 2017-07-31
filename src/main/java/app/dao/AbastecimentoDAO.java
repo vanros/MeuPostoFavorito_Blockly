@@ -74,4 +74,11 @@ public interface AbastecimentoDAO extends JpaRepository<Abastecimento, java.lang
   @Query("SELECT entity FROM Abastecimento entity WHERE entity.carro.id = :id")
   public Page<Abastecimento> findAbastecimentosByCarro(@Param(value="id") java.lang.String id, Pageable pageable);
 
+  /**
+   * Foreign Key combustivel
+   * @generated
+   */
+  @Query("SELECT entity FROM Abastecimento entity WHERE entity.combustivel.id = :id")
+  public Page<Abastecimento> findAbastecimentosByCombustivel(@Param(value="id") java.lang.String id, Pageable pageable);
+
 }

@@ -54,6 +54,13 @@ public interface CombustivelDAO extends JpaRepository<Combustivel, java.lang.Str
 
 
   /**
+   * OneToMany Relation
+   * @generated
+   */
+  @Query("SELECT entity FROM Abastecimento entity WHERE entity.combustivel.id = :id")
+  public Page<Abastecimento> findAbastecimento(@Param(value="id") java.lang.String id, Pageable pageable);
+
+  /**
    * Foreign Key posto
    * @generated
    */
