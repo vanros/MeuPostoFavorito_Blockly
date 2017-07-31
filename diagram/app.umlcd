@@ -20,6 +20,7 @@
       "restPath": "/api/rest",
       "visionLikePackage": false,
       "chkApi": false,
+      "generationType": "drop-and-create-tables",
       "attrs": {}
     },
     {
