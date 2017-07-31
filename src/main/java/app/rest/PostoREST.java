@@ -51,6 +51,13 @@ public class PostoREST {
   private AbastecimentoBusiness abastecimentoBusiness;
 
   /**
+   * @generated
+   */
+  @Autowired
+  @Qualifier("CombustivelBusiness")
+  private CombustivelBusiness combustivelBusiness;
+
+  /**
    * Serviço exposto para novo registro de acordo com a entidade fornecida
    * 
    * @generated
@@ -191,6 +198,44 @@ public class PostoREST {
     Posto posto = this.postoBusiness.get(postoId);
     entity.setPosto(posto);
     return this.abastecimentoBusiness.post(entity);
+  }
+
+  /**
+   * OneToMany Relationship GET
+   * @generated
+   */
+  @RequestMapping(method = RequestMethod.GET, value="/{postoId}/Combustivel")    
+  public HttpEntity<PagedResources<Combustivel>> findCombustivel(@PathVariable("postoId") java.lang.String postoId, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(postoBusiness.findCombustivel(postoId, pageable)), HttpStatus.OK);
+  }
+
+  /**
+   * OneToMany Relationship DELETE 
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.DELETE, value="/{postoId}/Combustivel/{combustivelId}")    
+  public void deleteCombustivel(@PathVariable("combustivelId") java.lang.String combustivelId) throws Exception {
+    this.combustivelBusiness.delete(combustivelId);
+  }
+  
+  /**
+   * OneToMany Relationship PUT
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.PUT, value="/{postoId}/Combustivel")
+  public Combustivel putCombustivel(@Validated @RequestBody final Combustivel entity, @PathVariable("postoId") java.lang.String postoId) throws Exception {
+    return this.combustivelBusiness.put(entity);
+  }  
+  
+  /**
+   * OneToMany Relationship POST
+   * @generated
+   */  
+  @RequestMapping(method = RequestMethod.POST, value="/{postoId}/Combustivel")
+  public Combustivel postCombustivel(@Validated @RequestBody final Combustivel entity, @PathVariable("postoId") java.lang.String postoId) throws Exception {
+    Posto posto = this.postoBusiness.get(postoId);
+    entity.setPosto(posto);
+    return this.combustivelBusiness.post(entity);
   }
   
   /**
